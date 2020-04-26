@@ -1,22 +1,24 @@
 package wins.backendwins.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import wins.backendwins.manager.UserDAO;
-import wins.backendwins.model.DTO.UserDTO;
+import wins.backendwins.manager.UserDAOImpl;
+import wins.backendwins.model.entity.User;
 
 @RestController
 @RequestMapping("users")
 public class UsersController {
 
-    private UserDAO userDAO = new UserDAO();
+    @Autowired
+    private UserDAOImpl userDAO;
 
     @GetMapping("{id}")
-    public UserDTO getUser(@PathVariable String id) {
+    public User getUser(@PathVariable String id) {
         return userDAO.getUserByID(id);
     }
 
     @PostMapping
-    public UserDTO createUser(@RequestBody UserDTO user) {
+    public User createUser(@RequestBody User user) {
 
         userDAO.createUser(user);
 
@@ -24,7 +26,7 @@ public class UsersController {
     }
 
     @PutMapping("{id}")
-    public UserDTO updateUser(@PathVariable String id, @RequestBody UserDTO user) {
+    public User updateUser(@PathVariable String id, @RequestBody User user) {
 
         return userDAO.updateUser(id, user);
     }

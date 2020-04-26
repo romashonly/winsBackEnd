@@ -1,49 +1,13 @@
 package wins.backendwins.manager;
 
-import wins.backendwins.model.DTO.TotalStatsDTO;
-import wins.backendwins.model.DTO.TrickDTO;
-import wins.backendwins.model.DTO.UserDTO;
+import wins.backendwins.model.entity.User;
 
-import java.util.ArrayList;
+public interface UserDAO {
+    User getUserByID(String id);
 
-public class UserDAO {
+    void createUser(User user);
 
-    private UserDTO defaultUser = UserDTO.builder()
-            .login("roman")
-            .password("roman")
-            .id("1")
-            .name("Roman")
-            .city("Kazan")
-            .age(20)
-            .facebook("")
-            .instagram("")
-            .vkonakte("")
-            .skateTrick(new ArrayList<TrickDTO>()  {
-                {
-                    add(new TrickDTO());
-                    add(new TrickDTO());
-                }
-            })
-            .scootTrick(new ArrayList<>())
-            .bmxTrick(new ArrayList<>())
-            .standIsRegular(true)
-            .totalStats(new TotalStatsDTO())
-            .promotionalСodes(new ArrayList<>())
-            .build();
+    User updateUser(String id, User user);
 
-    public UserDTO getUserByID(String id) {
-        return this.defaultUser;
-    }
-
-    public void createUser(UserDTO user) {
-
-    }
-
-    public UserDTO updateUser(String id, UserDTO user) {
-        return this.defaultUser;
-    }
-
-    public void deleteUser(String id) {
-
-    }
+    void deleteUser(String id);
 }

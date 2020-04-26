@@ -1,9 +1,14 @@
-package wins.backendwins.model.DTO;
+package wins.backendwins.model.dto;
 
 import lombok.Builder;
+import lombok.Data;
 
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.List;
 
+@Data
 @Builder
 public class UserDTO {
 
@@ -23,7 +28,7 @@ public class UserDTO {
     private List<TrickDTO> scootTrick;
     private List<TrickDTO> bmxTrick;
 
-//    private String avatarImageData;
+    private String avatarImageData;
 
     private boolean standIsRegular;
 
@@ -43,6 +48,7 @@ public class UserDTO {
             List<TrickDTO> skateTrick,
             List<TrickDTO> scootTrick,
             List<TrickDTO> bmxTrick,
+            String avatarImageData,
             boolean standIsRegular,
             TotalStatsDTO totalStats,
             List<PromocodeDTO> promotionalСodes
@@ -59,68 +65,9 @@ public class UserDTO {
         this.skateTrick = skateTrick;
         this.scootTrick = scootTrick;
         this.bmxTrick = bmxTrick;
+        this.avatarImageData = avatarImageData;
         this.standIsRegular = standIsRegular;
         this.totalStats = totalStats;
         this.promotionalСodes = promotionalСodes;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public String getFacebook() {
-        return facebook;
-    }
-
-    public String getInstagram() {
-        return instagram;
-    }
-
-    public String getVkonakte() {
-        return vkonakte;
-    }
-
-    public List<TrickDTO> getSkateTrick() {
-        return skateTrick;
-    }
-
-    public List<TrickDTO> getScootTrick() {
-        return scootTrick;
-    }
-
-    public List<TrickDTO> getBmxTrick() {
-        return bmxTrick;
-    }
-
-    public boolean isStandIsRegular() {
-        return standIsRegular;
-    }
-
-    public TotalStatsDTO getTotalStats() {
-        return totalStats;
-    }
-
-    public List<PromocodeDTO> getPromotionalСodes() {
-        return promotionalСodes;
     }
 }
