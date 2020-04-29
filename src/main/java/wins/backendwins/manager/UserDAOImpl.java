@@ -2,13 +2,11 @@ package wins.backendwins.manager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import wins.backendwins.manager.repository.PromocodeRepository;
+import wins.backendwins.manager.repository.ChallengeRepository;
 import wins.backendwins.manager.repository.TotalStatsRepository;
 import wins.backendwins.manager.repository.TrickRepository;
 import wins.backendwins.manager.repository.UserRepository;
 import wins.backendwins.model.entity.User;
-
-import java.util.ArrayList;
 
 @Service
 public class UserDAOImpl implements UserDAO {
@@ -23,7 +21,7 @@ public class UserDAOImpl implements UserDAO {
     private TrickRepository trickRepository;
 
     @Autowired
-    private PromocodeRepository promocodeRepository;
+    private ChallengeRepository challengeRepository;
 
     @Override
     public User getUserByID(String id) {
@@ -59,8 +57,8 @@ public class UserDAOImpl implements UserDAO {
         user.getBmxTrick().forEach(trick -> trick.setUser_bmx(user));
         trickRepository.saveAll(user.getBmxTrick());
 
-        user.getPromotionalСodes().forEach(promocode -> promocode.setUser(user));
-        promocodeRepository.saveAll(user.getPromotionalСodes());
+//        user.getPromotionalСodes().forEach(challenge -> challenge.setUser(user));
+//        promocodeRepository.saveAll(user.getPromotionalСodes());
     }
 
 

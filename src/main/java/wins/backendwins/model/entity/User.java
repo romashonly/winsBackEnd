@@ -4,12 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
-import org.hibernate.engine.internal.Cascade;
-import wins.backendwins.model.dto.PromocodeDTO;
-import wins.backendwins.model.dto.TotalStatsDTO;
-import wins.backendwins.model.dto.TrickDTO;
 
 import javax.persistence.*;
 import java.util.List;
@@ -34,7 +28,7 @@ public class User {
 
     private String facebook;
     private String instagram;
-    private String vkonakte;
+    private String vkontakte;
 
     @OneToMany(mappedBy = "user_skate", cascade = CascadeType.ALL)
     private List<Trick> skateTrick;
@@ -51,6 +45,9 @@ public class User {
     @JoinColumn(name="total_stats_id")
     private TotalStats totalStats;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Promocode> promotionalСodes;
+    @ManyToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.PERSIST})
+    private List<Challenge> challenges;
+
+    @ManyToMany(mappedBy = "winner_user", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.PERSIST})
+    private List<Challenge> doneChallenges;
 }

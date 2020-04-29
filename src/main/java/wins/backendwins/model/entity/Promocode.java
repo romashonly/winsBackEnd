@@ -17,15 +17,12 @@ import javax.persistence.*;
 public class Promocode {
 
     @Id
-    private String promocode;
+    private String id;
 
-    private String trickName;
-    private String boardshop;
-    private int startDate;
-    private int endDate;
+    private String code;
 
     @ManyToOne()
     @JsonIgnore
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "challenge_id")
+    private Challenge challenge;
 }
