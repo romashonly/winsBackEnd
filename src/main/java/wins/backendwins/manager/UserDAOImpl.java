@@ -67,4 +67,14 @@ public class UserDAOImpl implements UserDAO {
         usersRepository.delete(usersRepository.findById(id));
     }
 
+    public boolean checkOriginLogin(String login) {
+
+        return usersRepository.findByLogin(login) == null;
+    }
+
+    public User checkCorrectLoginAndPassword(String login, String password) {
+
+        return usersRepository.findByLoginAndPassword(login, password);
+    }
+
 }
