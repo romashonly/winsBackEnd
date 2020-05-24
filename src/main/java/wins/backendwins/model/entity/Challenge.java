@@ -29,6 +29,9 @@ public class Challenge {
 
     private String boardShop;
 
+    private boolean isDone;
+    private boolean isChallenge;
+
     private int startDate;
     private int endDate;
 
