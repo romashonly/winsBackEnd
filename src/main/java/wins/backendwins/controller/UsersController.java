@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import wins.backendwins.manager.UserDAOImpl;
 import wins.backendwins.model.BoolRequest;
+import wins.backendwins.model.entity.Challenge;
 import wins.backendwins.model.entity.User;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("users")
@@ -40,6 +43,12 @@ public class UsersController {
         }
 
         return BoolRequest.builder().value(isCorrect).id(id).build();
+    }
+
+    @GetMapping("challenges")
+    public List<Challenge> getActualChallenges(@RequestParam String user_id) {
+
+        return userDAO.getActualChallenges(user_id);
     }
 
     @PostMapping

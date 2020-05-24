@@ -6,7 +6,10 @@ import wins.backendwins.manager.repository.ChallengeRepository;
 import wins.backendwins.manager.repository.TotalStatsRepository;
 import wins.backendwins.manager.repository.TrickRepository;
 import wins.backendwins.manager.repository.UserRepository;
+import wins.backendwins.model.entity.Challenge;
 import wins.backendwins.model.entity.User;
+
+import java.util.List;
 
 @Service
 public class UserDAOImpl implements UserDAO {
@@ -57,6 +60,11 @@ public class UserDAOImpl implements UserDAO {
         user.getBmxTrick().forEach(trick -> trick.setUser_bmx(user));
         trickRepository.saveAll(user.getBmxTrick());
 
+        user.getChallenges().forEach(challenge -> challenge.getUser().add(user));
+        challengeRepository.saveAll(user.getChallenges());
+
+        user.getDoneChallenges().forEach(challenge -> challenge.getWinner_user().add(user));
+        challengeRepository.saveAll(user.getDoneChallenges());
 //        user.getPromotionalСodes().forEach(challenge -> challenge.setUser(user));
 //        promocodeRepository.saveAll(user.getPromotionalСodes());
     }
@@ -65,6 +73,14 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public void deleteUser(String id) {
         usersRepository.delete(usersRepository.findById(id));
+    }
+
+    @Override
+    public List<Challenge> getActualChallenges(String user_id) {
+
+        User user = usersRepository.findById(user_id);
+
+        return user.getChallenges();
     }
 
     public boolean checkOriginLogin(String login) {
