@@ -38,7 +38,7 @@
                 <div class="col-3">
                 </div>
                 <div class="col-6 mt-3 align-content-center">
-                    <h5>Mail:</h5> <a href="mailto:WinsApp@gmail.ru">WinsApp@gmail.ru</a>
+                    <h5>Mail:</h5> <a href="mailto:winsapptechnical@gmail.com">winsapptechnical@gmail.com</a>
                 </div>
                 <div class="col-3">
                 </div>
@@ -47,7 +47,7 @@
                 <div class="col-3">
                 </div>
                 <div class="col-6 mt-3 align-content-center">
-                    <h5>Telegram:</h5> <a href="">@pepa_desh</a>
+                    <h5>Telegram:</h5> <a href="">@wins_app</a>
                 </div>
                 <div class="col-3">
                 </div>
