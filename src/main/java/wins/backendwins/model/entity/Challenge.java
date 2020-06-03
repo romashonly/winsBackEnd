@@ -32,8 +32,8 @@ public class Challenge {
     private boolean isDone;
     private boolean isChallenge;
 
-    private int startDate;
-    private int endDate;
+    private long startDate;
+    private long endDate;
 
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.PERSIST } )
     @JsonIgnore
